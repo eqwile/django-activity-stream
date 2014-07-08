@@ -14,6 +14,9 @@ def setup_generic_relations(model_class):
     """
     Set up GenericRelations for actionable models.
     """
+
+    from actstream.models import Action
+
     related_attr_name = 'related_name'
     related_attr_value = 'actions_with_%s' % label(model_class)
     if django.VERSION >= (1, 7):
@@ -33,7 +36,7 @@ def setup_generic_relations(model_class):
 
         # @@@ I'm still not entirely sure why this works
         setattr(Action, attr_value, None)
-        
+
     return relations
 
 
