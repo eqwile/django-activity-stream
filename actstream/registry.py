@@ -30,6 +30,10 @@ def setup_generic_relations(model_class):
         rel = generic.GenericRelation('actstream.Action', **kwargs
                         ).contribute_to_class(model_class, attr)
         relations[field] = rel
+
+        # @@@ I'm still not entirely sure why this works
+        setattr(Action, attr_value, None)
+        
     return relations
 
 
